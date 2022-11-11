@@ -100,5 +100,5 @@ class DrawableObject:
         self.color = color
 
     def draw(self, surface):
-            pg.draw.circle(surface, color=self.color,  x=self.x, y=self.y, r=self.R)
+            pg.draw.circle(surface, color=self.color, center=(self.x, self.y), radius=self.R)
 
