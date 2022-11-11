@@ -60,7 +60,6 @@ def scale_y(y):
     return int(y*scale_factor) + window_height//2
 
 
-
 if __name__ == "__main__":
     print("This module is not for direct call!")
 
@@ -68,7 +67,6 @@ if __name__ == "__main__":
 class Drawer:
     def __init__(self, screen):
         self.screen = screen
-
 
     def update(self, figures, ui):
         self.screen.fill((0, 0, 0))
