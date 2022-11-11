@@ -20,8 +20,18 @@ def calculate_force(body, space_objects):
         if body == obj:
             continue  # тело не действует гравитационной силой на само себя!
         r = ((body.x - obj.x)**2 + (body.y - obj.y)**2)**0.5
-        r = max(r, body.R) # FIXME: обработка аномалий при прохождении одного тела сквозь другое
-        pass  # FIXME: Взаимодействие объектов
+        cos_alpha = (obj.x - body.x)//r
+        sin_alpha = (obj.y - body.y)//r
+        if r <= body.R:
+            alive = False
+            print("Crash object!!!")
+        else:
+            extra_force_x = gravitational_constant*(body.m*obj.m)//(r**2)*cos_alpha
+            extra_force_y = gravitational_constant*(body.m*obj.m)//(r**2)*sin_alpha
+            body.Fx += extra_force_x
+            body.Fy += extra_force_y
+
+
 
 def move_space_object(body, dt):
     """Перемещает тело в соответствии с действующей на него силой.
