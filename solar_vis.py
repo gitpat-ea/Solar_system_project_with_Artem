@@ -84,3 +84,4 @@ class DrawableObject:
 
     def draw(self, surface):
             self.obj.draw(surface)
+
