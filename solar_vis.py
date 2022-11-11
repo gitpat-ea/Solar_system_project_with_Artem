@@ -1,6 +1,16 @@
 # coding: utf-8
 # license: GPLv3
 
+green = (0, 255, 0)
+red = (255, 0, 0)
+blue = (0, 0, 255)
+orange = (255, 180, 0)
+yellow = (255, 255, 0)
+white = (255, 255, 255)
+grey = (127, 127, 127)
+COLORS = {'green': green, 'red': red, 'blue': blue, 'orange': orange, 'yellow': yellow, 'white': white, 'grey': grey}
+
+
 import pygame as pg
 
 """Модуль визуализации.
@@ -81,7 +91,13 @@ class Drawer:
 class DrawableObject:
     def __init__(self, obj):
         self.obj = obj
-
+        self.x = obj.x
+        self.y = obj.y
+        self.r = obj.r
+        for i in COLORS:
+            if obj.color == i:
+                color = COLORS[i]
+        self.color = color
     def draw(self, surface):
-            self.obj.draw(surface)
+            pg.draw.circle(surface, color=(self.color),  x=self.x, y=self.y, r=self.r)
 
