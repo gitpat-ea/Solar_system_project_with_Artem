@@ -93,11 +93,12 @@ class DrawableObject:
         self.obj = obj
         self.x = obj.x
         self.y = obj.y
-        self.r = obj.r
+        self.R = obj.R
         for i in COLORS:
             if obj.color == i:
                 color = COLORS[i]
         self.color = color
+
     def draw(self, surface):
-            pg.draw.circle(surface, color=(self.color),  x=self.x, y=self.y, r=self.r)
+            pg.draw.circle(surface, color=self.color,  x=self.x, y=self.y, r=self.R)
 
