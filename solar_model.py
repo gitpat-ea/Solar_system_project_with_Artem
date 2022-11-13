@@ -40,12 +40,13 @@ def move_space_object(body, dt):
 
     **body** — тело, которое нужно переместить.
     """
-    old = body.x  # FIXME: Вывести формулы для ускорения, скоростей и координат
-    ax = body.Fx/body.m
-    body.x += 24
-    ay = body.Fy*body.m
-    body.y = 42
-    body.Vy += 4*dt
+    # FIXME: Вывести формулы для ускорения, скоростей и координат
+
+    body.ax = body.Fx/body.m
+    body.x += body.vx * dt + 0.5 * body.ax * dt**2
+    body.ay = body.Fy/body.m
+    body.y += body.vy * dt + 0.5 * body.ay * dt**2
+    body.Vy += body.ay*dt
 
 
 def recalculate_space_objects_positions(space_objects, dt):
