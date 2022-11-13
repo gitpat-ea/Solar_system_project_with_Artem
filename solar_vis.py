@@ -10,7 +10,6 @@ white = (255, 255, 255)
 grey = (127, 127, 127)
 COLORS = {'green': green, 'red': red, 'blue': blue, 'orange': orange, 'yellow': yellow, 'white': white, 'grey': grey}
 
-
 import pygame as pg
 
 """Модуль визуализации.
@@ -38,7 +37,7 @@ scale_factor = 1
 def calculate_scale_factor(max_distance):
     """Вычисляет значение глобальной переменной **scale_factor** по данной характерной длине"""
     global scale_factor
-    scale_factor = 0.5*min(window_height, window_width)/max_distance
+    scale_factor = 0.5 * min(window_height, window_width) / max_distance
     print('Scale factor:', scale_factor)
 
 
@@ -53,7 +52,7 @@ def scale_x(x):
     **x** — x-координата модели.
     """
 
-    return int(x*scale_factor) + window_width//2
+    return int(x * scale_factor) + window_width // 2
 
 
 def scale_y(y):
@@ -67,7 +66,7 @@ def scale_y(y):
 
     **y** — y-координата модели.
     """
-    return int(y*scale_factor) + window_height//2
+    return int(y * scale_factor) + window_height // 2
 
 
 if __name__ == "__main__":
@@ -82,7 +81,7 @@ class Drawer:
         self.screen.fill((0, 0, 0))
         for figure in figures:
             figure.draw(self.screen)
-        
+
         ui.blit()
         ui.update()
         pg.display.update()
@@ -100,5 +99,4 @@ class DrawableObject:
         self.color = color
 
     def draw(self, surface):
-            pg.draw.circle(surface, color=self.color, center=(self.x, self.y), radius=self.R)
-
+        pg.draw.circle(surface, self.color, (self.x, self.y), self.R)
