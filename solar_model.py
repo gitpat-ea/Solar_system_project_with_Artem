@@ -19,8 +19,8 @@ def calculate_force(body, space_objects):
         if body == obj:
             continue  # тело не действует гравитационной силой на само себя!
         r = ((body.x - obj.x)**2 + (body.y - obj.y)**2)**0.5
-        cos_alpha = (obj.x - body.x)//r
-        sin_alpha = (obj.y - body.y)//r
+        cos_alpha = 1#(obj.x - body.x)//r
+        sin_alpha = 1#(obj.y - body.y)//r
         if r <= body.R:
             alive = False
             print("Crash object!!!")
@@ -45,7 +45,8 @@ def move_space_object(body, dt):
     body.x += body.vx * dt  # + 0.5 * body.ax * dt**2
     body.ay = body.Fy/body.m
     body.y += body.vy * dt  # + 0.5 * body.ay * dt**2
-    body.Vy += body.ay*dt
+    body.vy += body.ay*dt
+    body.vx += body.ay*dt
 
 
 def recalculate_space_objects_positions(space_objects, dt):
