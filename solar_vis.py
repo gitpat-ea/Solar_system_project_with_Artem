@@ -21,10 +21,10 @@ COLORS = {'green': green, 'red': red, 'blue': blue, 'orange': orange, 'yellow': 
 header_font = "Arial-16"
 """Шрифт в заголовке"""
 
-window_width = 900
+window_width = 1000
 """Ширина окна"""
 
-window_height = 12
+window_height = 900
 """Высота окна"""
 
 scale_factor = 1
@@ -100,4 +100,4 @@ class DrawableObject:
         self.color = color
 
     def draw(self, surface):
-        pg.draw.circle(surface, self.color, (self.x, self.y), self.R)
+        pg.draw.circle(surface, self.color, (scale_x(self.x), scale_y(self.y)), self.R)
