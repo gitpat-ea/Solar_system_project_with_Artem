@@ -43,9 +43,9 @@ def move_space_object(body, dt):
     # FIXME: Вывести формулы для ускорения, скоростей и координат
 
     body.ax = body.Fx/body.m
-    body.x += body.vx * dt + 0.5 * body.ax * dt**2
+    body.x += body.vx * dt  # + 0.5 * body.ax * dt**2
     body.ay = body.Fy/body.m
-    body.y += body.vy * dt + 0.5 * body.ay * dt**2
+    body.y += body.vy * dt  # + 0.5 * body.ay * dt**2
     body.Vy += body.ay*dt
 
 
