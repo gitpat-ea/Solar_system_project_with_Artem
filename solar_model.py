@@ -19,8 +19,8 @@ def calculate_force(body, space_objects):
         if body == obj:
             continue  # тело не действует гравитационной силой на само себя!
         r = ((body.x - obj.x)**2 + (body.y - obj.y)**2)**0.5
-        cos_alpha = 1#(obj.x - body.x)//r
-        sin_alpha = 1#(obj.y - body.y)//r
+        cos_alpha = (obj.x - body.x)//r
+        sin_alpha = (obj.y - body.y)//r
         if r <= body.R:
             alive = False
             print("Crash object!!!")
