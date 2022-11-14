@@ -1,5 +1,7 @@
 # coding: utf-8
 # license: GPLv3
+import pygame as pg
+
 
 green = (0, 255, 0)
 red = (255, 0, 0)
@@ -10,7 +12,6 @@ white = (255, 255, 255)
 grey = (127, 127, 127)
 COLORS = {'green': green, 'red': red, 'blue': blue, 'orange': orange, 'yellow': yellow, 'white': white, 'grey': grey}
 
-import pygame as pg
 
 """Модуль визуализации.
 Нигде, кроме этого модуля, не используются экранные координаты объектов.
