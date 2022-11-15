@@ -91,6 +91,7 @@ class Drawer:
 class DrawableObject:
     def __init__(self, obj):
         self.obj = obj
+        self.type = obj.type
         self.m = obj.m
         self.x = obj.x
         self.y = obj.y
