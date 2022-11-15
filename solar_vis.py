@@ -91,8 +91,13 @@ class Drawer:
 class DrawableObject:
     def __init__(self, obj):
         self.obj = obj
+        self.m = obj.m
         self.x = obj.x
         self.y = obj.y
+        self.vx = obj.vx
+        self.vy = obj.vy
+        self.Fy = obj.Fy
+        self.Fx = obj.Fx
         self.R = obj.R
         for i in COLORS:
             if obj.color == i:

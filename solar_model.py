@@ -29,6 +29,7 @@ def calculate_force(body, space_objects):
             extra_force_y = gravitational_constant*(body.m*obj.m)//(r**2)*sin_alpha
             body.Fx += extra_force_x
             body.Fy += extra_force_y
+    print(body.Fx, body.Fy)
 
 
 
@@ -62,6 +63,7 @@ def recalculate_space_objects_positions(space_objects, dt):
         calculate_force(body, space_objects)
     for body in space_objects:
         move_space_object(body, dt)
+        print(body.Fx)
 
 
 if __name__ == "__main__":
