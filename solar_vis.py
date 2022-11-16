@@ -69,7 +69,6 @@ def scale_y(y):
     """
     return int(y * scale_factor) + window_height // 2
 
-
 if __name__ == "__main__":
     print("This module is not for direct call!")
 
@@ -100,6 +99,8 @@ class DrawableObject:
         self.Fy = obj.Fy
         self.Fx = obj.Fx
         self.R = obj.R
+        self.ax = obj.ax
+        self.ay = obj.ay
         for i in COLORS:
             if obj.color == i:
                 color = COLORS[i]

@@ -21,7 +21,7 @@ model_time = 0
 """Физическое время от начала расчёта.
 Тип: float"""
 
-time_scale = 1000.0
+time_scale = 1.0
 """Шаг по времени при моделировании.
 Тип: float"""
 
@@ -41,6 +41,9 @@ def execution(delta):
     # for obj in space_objects:
         # print(obj.Fx)
     model_time += delta
+    '''for obj in space_objects:
+        print(obj.Fx, obj.Fy)'''
+
 
 
 def start_execution():
@@ -72,12 +75,14 @@ def open_file():
     global space_objects
     global browser
     global model_time
+    global max_distance
 
     model_time = 0.0
     in_filename = "solar_system.txt"
     space_objects = read_space_objects_data_from_file(in_filename)
     max_distance = max([max(abs(obj.obj.x), abs(obj.obj.y)) for obj in space_objects])
     calculate_scale_factor(max_distance)
+
 
 
 def handle_events(events, menu):
@@ -89,7 +94,7 @@ def handle_events(events, menu):
 
 
 def slider_to_real(val):
-    return np.exp(5 + val)
+    return np.exp(10+val)
 
 
 def slider_reaction(event):
@@ -99,7 +104,7 @@ def slider_reaction(event):
 
 def init_ui(screen):
     global browser
-    slider = thorpy.SliderX(100, (-10, 10), "Simulation speed")
+    slider = thorpy.SliderX(100, (0, 50), "Simulation speed")
     slider.user_func = slider_reaction
     button_stop = thorpy.make_button("Quit", func=stop_execution)
     button_pause = thorpy.make_button("Pause", func=pause_execution)
