@@ -2,10 +2,10 @@
 # license: GPLv3
 
 import pygame as pg
-from solar_vis import *
-from solar_model import *
-from solar_input import *
-from solar_objects import *
+from source_code.solar_vis import *
+from source_code.solar_model import *
+from source_code.solar_input import *
+from source_code.solar_objects import *
 import thorpy
 import time
 import numpy as np
@@ -157,11 +157,13 @@ def main():
     last_time = time.perf_counter()
     drawer = Drawer(screen)
     menu, box, timer = init_ui(screen)
+    clear_a_file()
     perform_execution = True
 
     while alive:
         handle_events(pg.event.get(), menu)
         cur_time = time.perf_counter()
+        all_writer(space_objects)
         if perform_execution:
             execution((cur_time - last_time) * time_scale)
             text = "%d seconds passed" % (int(model_time))

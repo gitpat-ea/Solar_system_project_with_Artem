@@ -23,7 +23,6 @@ def parse_star_parameters(line, star):
     star.y = float(line[5])
     star.vx = float(line[6])
     star.vy = float(line[7])
-    star.name = line[8]
 
 
 def parse_planet_parameters(line, planet):
@@ -44,7 +43,6 @@ def parse_planet_parameters(line, planet):
     planet.y = float(line[5])
     planet.vx = float(line[6])
     planet.vy = float(line[7])
-    planet.name = line[8]
 
 def read_space_objects_data_from_file(input_filename):
     """Cчитывает данные о космических объектах из файла, создаёт сами объекты
@@ -73,8 +71,8 @@ def read_space_objects_data_from_file(input_filename):
     return [DrawableObject(obj) for obj in objects]
 
 
-def write_space_objects_data_to_file(output_filename, space_objects):
-    """Сохраняет данные о космических объектах в файл.
+def write_space_objects_vx_to_file(output_filename, space_objects):
+    """Сохраняет Скорость x о космических объектах в файл.
     Строки должны иметь следующий формат:
     Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
     Planet <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
@@ -82,22 +80,95 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     **output_filename** — имя входного файла
     **space_objects** — список объектов планет и звёзд
     """
-    with open(output_filename, 'w') as out_file:
-        a = np.array()
+    with open(output_filename, 'a') as out_file:
+        s = ''
         for obj in space_objects:
-            np.append(a, 1)
-            print(a)
-            a = str(a)
-            out_file.write(a)
+            s += str(obj.vx)
+            s += ' '
+        out_file.write(s)
+        if len(s.strip()) != 0:
+            out_file.write('\n')
+        out_file.close()
 
-#def clear_a_file(output_filename):
-#    '''
-#
-#    :param output_filename: name of a file which should be cleaned
-#    :return: cleared file fith same name
-#    '''
-#    with open(output_filename, 'w') as out_file:
-#        out_file.clear()
+def write_space_objects_vy_to_file(output_filename, space_objects):
+    """Сохраняет Скорость y о космических объектах в файл.
+    Строки должны иметь следующий формат:
+    Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
+    Planet <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
+    Параметры:
+    **output_filename** — имя входного файла
+    **space_objects** — список объектов планет и звёзд
+    """
+    with open(output_filename, 'a') as out_file:
+        s = ''
+        for obj in space_objects:
+            s += str(obj.vy)
+            s += ' '
+        out_file.write(s)
+        if len(s.strip()) != 0:
+            out_file.write('\n')
+        out_file.close()
+
+def write_space_objects_x_to_file(output_filename, space_objects):
+    """Сохраняет x о космических объектах в файл.
+    Строки должны иметь следующий формат:
+    Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
+    Planet <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
+    Параметры:
+    **output_filename** — имя входного файла
+    **space_objects** — список объектов планет и звёзд
+    """
+    with open(output_filename, 'a') as out_file:
+        s = ''
+        for obj in space_objects:
+            s += str(obj.x)
+            s += ' '
+        out_file.write(s)
+        if len(s.strip()) != 0:
+            out_file.write('\n')
+        out_file.close()
+
+def write_space_objects_y_to_file(output_filename, space_objects):
+    """Сохраняет y о космических объектах в файл.
+    Строки должны иметь следующий формат:
+    Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
+    Planet <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
+    Параметры:
+    **output_filename** — имя входного файла
+    **space_objects** — список объектов планет и звёзд
+    """
+    with open(output_filename, 'a') as out_file:
+        s = ''
+        for obj in space_objects:
+            s += str(obj.y)
+            s += ' '
+        out_file.write(s)
+        if len(s.strip()) != 0:
+            out_file.write('\n')
+        out_file.close()
+
+
+def all_writer(space_objects):
+    write_space_objects_vx_to_file('Data/vx.txt', space_objects)
+    write_space_objects_vy_to_file('Data/vy.txt', space_objects)
+    write_space_objects_x_to_file('Data/x.txt', space_objects)
+    write_space_objects_y_to_file('Data/y.txt', space_objects)
+
+
+def clear_a_file():
+    '''
+
+    :return: cleares all files in directory named Data
+    '''
+    with open('Data/vx.txt', 'w') as file:
+        file.close()
+    with open('Data/vy.txt', 'w') as file:
+        file.close()
+    with open('Data/x.txt', 'w') as file:
+        file.close()
+    with open('Data/y.txt', 'w') as file:
+        file.close()
+
 
 
 
