@@ -42,9 +42,9 @@ def move_space_object(body, dt):
     # FIXME: Вывести формулы для ускорения, скоростей и координат
 
     body.ax = body.Fx/body.m
-    body.x += body.vx * dt # + 0.5 * body.ax * dt**2/2
+    body.x += body.vx * dt  # + 0.5 * body.ax * dt**2
     body.ay = body.Fy/body.m
-    body.y += body.vy * dt # + 0.5 * body.ay * dt**2/2
+    body.y += body.vy * dt  # + 0.5 * body.ay * dt**2
     body.vy += body.ay*dt
     body.vx += body.ax*dt
 
@@ -62,6 +62,8 @@ def recalculate_space_objects_positions(space_objects, dt):
         calculate_force(body, space_objects)
     for body in space_objects:
         move_space_object(body, dt)
+        if body.m == 3.302E23:
+            print(body.Fx, body.vx)
 
 
 if __name__ == "__main__":

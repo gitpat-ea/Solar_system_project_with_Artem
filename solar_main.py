@@ -1,9 +1,11 @@
 # coding: utf-8
 # license: GPLv3
 
-from source_code.solar_vis import *
-from source_code.solar_model import *
-from source_code.solar_input import *
+import pygame as pg
+from solar_vis import *
+from solar_model import *
+from solar_input import *
+from solar_objects import *
 import thorpy
 import time
 import numpy as np
@@ -36,6 +38,8 @@ def execution(delta):
     global model_time
     global displayed_time
     recalculate_space_objects_positions([dr for dr in space_objects], delta)
+    # for obj in space_objects:
+        # print(obj.Fx)
     model_time += delta
 
 
@@ -95,7 +99,7 @@ def slider_reaction(event):
 
 def init_ui(screen):
     global browser
-    slider = thorpy.SliderX(100, (0, 15), "Simulation speed")
+    slider = thorpy.SliderX(100, (-10, 10), "Simulation speed")
     slider.user_func = slider_reaction
     button_stop = thorpy.make_button("Quit", func=stop_execution)
     button_pause = thorpy.make_button("Pause", func=pause_execution)
@@ -158,7 +162,6 @@ def main():
     while alive:
         handle_events(pg.event.get(), menu)
         cur_time = time.perf_counter()
-        write_space_objects_data_to_file("Data.txt", space_objects)
         if perform_execution:
             execution((cur_time - last_time) * time_scale)
             text = "%d seconds passed" % (int(model_time))
