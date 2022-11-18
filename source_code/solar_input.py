@@ -89,15 +89,17 @@ def write_space_objects_data_to_file(output_filename, space_objects):
             a = str(a)
             out_file.write(a)
 
-#def clear_a_file(output_filename):
-#    '''
-#
-#    :param output_filename: name of a file which should be cleaned
-#    :return: cleared file fith same name
-#    '''
-#    with open(output_filename, 'w') as out_file:
-#        out_file.clear()
+def clear_a_file(output_filename):
+    '''
 
+    :param output_filename: name of a file which should be cleaned
+    :return: cleared file fith same name
+    '''
+    with open(output_filename, 'w') as out_file:
+        out_file.clear()
+
+def psevdo_write():
+    pass
 
 
 

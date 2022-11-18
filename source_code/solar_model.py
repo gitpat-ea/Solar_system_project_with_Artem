@@ -62,8 +62,7 @@ def recalculate_space_objects_positions(space_objects, dt):
         calculate_force(body, space_objects)
     for body in space_objects:
         move_space_object(body, dt)
-        if body.m == 3.302E23:
-            print(body.Fx, body.vx)
+
 
 
 if __name__ == "__main__":
