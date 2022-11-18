@@ -38,8 +38,7 @@ class Star:
 
     color = "red"
     """Цвет звезды"""
-
-
+    name = "default star name"
 class Planet:
     """Тип данных, описывающий планету.
     Содержит массу, координаты, скорость планеты,
@@ -77,3 +76,5 @@ class Planet:
     """Цвет планеты"""
     ax =0
     ay = 0
+
+    name = "default planet name"
