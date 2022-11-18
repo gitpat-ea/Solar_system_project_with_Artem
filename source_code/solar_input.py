@@ -1,9 +1,9 @@
 # coding: utf-8
 # license: GPLv3
 
-from solar_objects import Star, Planet
-from solar_vis import DrawableObject
-
+from source_code.solar_objects import Star, Planet
+from source_code.solar_vis import DrawableObject
+import numpy as np
 
 def parse_star_parameters(line, star):
     """Считывает данные о звезде из строки.
@@ -83,10 +83,23 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     **space_objects** — список объектов планет и звёзд
     """
     with open(output_filename, 'w') as out_file:
+        a = np.array()
         for obj in space_objects:
-            print(out_file, "%s %d %s %f" % ('1', 2, '3', 4.5))
-            # FIXME!
-            # Прописать в самом конце
+            np.append(a, 1)
+            print(a)
+            a = str(a)
+            out_file.write(a)
+
+#def clear_a_file(output_filename):
+#    '''
+#
+#    :param output_filename: name of a file which should be cleaned
+#    :return: cleared file fith same name
+#    '''
+#    with open(output_filename, 'w') as out_file:
+#        out_file.clear()
+
+
 
 
 if __name__ == "__main__":
