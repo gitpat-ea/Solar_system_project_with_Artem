@@ -2,10 +2,10 @@
 # license: GPLv3
 
 import pygame as pg
-from solar_vis import *
-from solar_model import *
-from solar_input import *
-from solar_objects import *
+from source_code.solar_vis import *
+from source_code.solar_model import *
+from source_code.solar_input import *
+from source_code.solar_objects import *
 import thorpy
 import time
 import numpy as np
@@ -89,7 +89,7 @@ def handle_events(events, menu):
 
 
 def slider_to_real(val):
-    return np.exp(5 + val)
+    return np.exp(10 + val)
 
 
 def slider_reaction(event):
@@ -99,7 +99,7 @@ def slider_reaction(event):
 
 def init_ui(screen):
     global browser
-    slider = thorpy.SliderX(100, (-10, 10), "Simulation speed")
+    slider = thorpy.SliderX(300, (0, 0.5), "Simulation speed")
     slider.user_func = slider_reaction
     button_stop = thorpy.make_button("Quit", func=stop_execution)
     button_pause = thorpy.make_button("Pause", func=pause_execution)
@@ -163,8 +163,9 @@ def main():
         handle_events(pg.event.get(), menu)
         cur_time = time.perf_counter()
         if perform_execution:
-            execution((cur_time - last_time) * time_scale)
-            text = "%d seconds passed" % (int(model_time))
+            for i in range (500):
+                execution((cur_time - last_time) * time_scale)
+            text = "%d seconds passed" % (500*int(model_time))
             timer.set_text(text)
 
         last_time = cur_time
